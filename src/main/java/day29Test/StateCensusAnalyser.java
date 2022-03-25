@@ -14,7 +14,7 @@ import com.opencsv.exceptions.CsvValidationException;
 		/**
 		 *  Method to load the data and display
 		 */
-		public void loadData() { 
+		public void loadData(String filePath) throws InvalidFile { 
 
 			try {
 				/**
@@ -31,28 +31,24 @@ import com.opencsv.exceptions.CsvValidationException;
 							Double.parseDouble(record[3])));
 				}
 
-				for (CSVstateCensus data : censusData) {
-					System.out.println(data);
-				}
-
 			} catch (FileNotFoundException e) {
 				
-				e.printStackTrace();
+				throw new InvalidFile("Invalid File");
 			} catch (CsvValidationException e) {
-				
+			
 				e.printStackTrace();
 			} catch (IOException e) {
-				
+			
 				e.printStackTrace();
 			}
 		}
 
 		/**
-		 * checking the size of the list to check if we have all the entries.
+		 * checking the size of the list 
 		 * @return -
 		 */
 		public boolean checkData() {
-			if (censusData.size() == 10)
+			if (censusData.size() == 29)
 				return true;
 			return false;
 		}
