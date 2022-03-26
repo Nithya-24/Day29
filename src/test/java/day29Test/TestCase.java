@@ -7,7 +7,8 @@ import org.junit.Test;
 
 public class TestCase {
 	StateCensusAnalyser analyser;
-
+	CSVState codeAnalyser;
+	
 	@Before
 	public void initialization() {
 		analyser = new StateCensusAnalyser();
@@ -37,5 +38,11 @@ public class TestCase {
 	@Test
 	public void testHeaderCheckSad() throws InvalidFile, InvalidDelimiter {
 		analyser.loadData("src/main/resources/IndiaStateCensusDataFileWrongHeader.csv");
+	}
+	
+	@Test
+	public void testCodeRecordMatch() throws Exception {
+		codeAnalyser.loadData("src/main/resources/IndiaStateCode.csv");
+		assertEquals(true, codeAnalyser.checkData(37));
 	}
 }
