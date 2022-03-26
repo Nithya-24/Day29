@@ -20,7 +20,8 @@ public class TestCase {
 	}
 	@Test
 	public void testFileCheckSad() throws InvalidFile, InvalidDelimiter {
-		analyser.loadData("src/main/resources/IndiaStateCensus.csv");
+		analyser.loadData("src/main/resources/IndiaStateCensusData.csv");
+		assertEquals(true, analyser.checkData());
 	}
 	
 	@Test
@@ -31,5 +32,10 @@ public class TestCase {
 	@Test
 	public void testDelimiterCheckSad() throws InvalidFile, InvalidDelimiter  {
 		analyser.loadData("src/main/resources/IndiaStateCensusDataWrongDeliminator.xls");
+	}
+	
+	@Test
+	public void testHeaderCheckSad() throws InvalidFile, InvalidDelimiter {
+		analyser.loadData("src/main/resources/IndiaStateCensusDataFileWrongHeader.csv");
 	}
 }
