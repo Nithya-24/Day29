@@ -26,6 +26,10 @@ import com.opencsv.exceptions.CsvValidationException;
 				/**
 				 * reads one line at a time 
 				 */
+				
+				if (!checkHeader(record))
+					throw new InvalidFile(" This is an invalid header");
+				
 				while ((record = reader.readNext()) != null) {
 					censusData.add(new CSVstateCensus(record[0], Long.parseLong(record[1]), Integer.parseInt(record[2]),
 							Double.parseDouble(record[3])));
@@ -55,6 +59,14 @@ import com.opencsv.exceptions.CsvValidationException;
 			if (censusData.size() == 30)
 				return true;
 			return false;
+		}
+		
+		/**
+		 *  Method to check header if incorrect
+		 */
+		public boolean checkHeader(String[] record) {
+			return (record[0].compareTo("State") + record[1].compareTo("Population") + record[2].compareTo("AreaInSqKm")
+					+ record[3].compareTo("DensityPerSqKm") == 0);
 		}
 
 	}
