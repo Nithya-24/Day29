@@ -14,7 +14,7 @@ import com.opencsv.exceptions.CsvValidationException;
 		/**
 		 *  Method to load the data and display
 		 */
-		public void loadData(String filePath) throws InvalidFile { 
+		public void loadData(String filePath) throws InvalidFile, InvalidDelimiter { 
 
 			try {
 				/**
