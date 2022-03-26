@@ -40,15 +40,19 @@ import com.opencsv.exceptions.CsvValidationException;
 			} catch (IOException e) {
 			
 				e.printStackTrace();
+				
+			}catch (NumberFormatException e) {
+				throw new InvalidFile(" This Record is an invalid type ");
 			}
+			
 		}
 
 		/**
 		 * checking the size of the list 
-		 * @return -
+		 * @return 
 		 */
 		public boolean checkData() {
-			if (censusData.size() == 29)
+			if (censusData.size() == 30)
 				return true;
 			return false;
 		}
